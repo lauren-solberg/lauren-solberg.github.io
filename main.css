@@ -7,11 +7,6 @@ body {
     height: 300px; /* Set the carousel height */
   }
 
-.carousel-caption { 
-  top: 100%; 
-}
-
-
 /* Define a media query for screens smaller than 768px (typical for mobile devices) */
 @media (max-width: 768px) {
   .carousel-item {
