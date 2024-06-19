@@ -13,7 +13,7 @@ body {
   
 .carousel-caption {
     position: absolute; /* Make the caption absolutely positioned within the item */
-    top: 20%;
+    top: 11%;
     transform: translateY(-10%); /* Vertically center the caption */
     text-align: right; /* Align captions to the right */
   }
