@@ -13,7 +13,7 @@ body {
   
 .carousel-caption {
     position: absolute; /* Make the caption absolutely positioned within the item */
-    top: 10%;
+    top: 100%;
     transform: translateY(-10%); /* Vertically center the caption */
   }
 
