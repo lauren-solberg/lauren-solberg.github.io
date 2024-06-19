@@ -2,11 +2,6 @@ body {
     font-family: "Lato";
   }
 
-.carousel-item {
-    overflow: hidden; /* This hides any content overflowing the container */
-    height: 300px; /* Set the carousel height */
-  }
-
 .carousel { 
   overflow: hidden; 
   padding-bottom: 4rem; 
