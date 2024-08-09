@@ -48,3 +48,8 @@ svg.selectAll("line")
         .attr("y1", function(d,i){ return 80+(i*20); }) // we made the y values index-dependent so that they show up one below the other instead of all in the same exact spot. 20px gap between each line
         .attr("x2", function(d){ return newX+(d*15); }) // "width" of the line. Determined by datapoint*15
         .attr("y2", function(d,i){ return 80+(i*20); });
+
+svg.append("text")
+    .attr("x", newX)
+    .attr("y", "150")
+    .text("hello world");
