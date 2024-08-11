@@ -52,4 +52,52 @@ svg.selectAll("line")
 svg.append("text")
     .attr("x", newX)
     .attr("y", "150")
-    .text("hello world");
+    .attr("fill", "none")
+    .attr("stroke", "blue")
+    .attr("stroke-width", "2")
+    .attr("text-anchor", "start")
+    .attr("dominant-baseline", "middle")
+    .attr("font-size", "30")
+    .text("start");
+
+svg.append("text")
+    .attr("x", newX)
+    .attr("y", "180")
+    .attr("fill", "blue")
+    .attr("stroke", "none")
+    .attr("font-size", "30")
+    .attr("text-anchor", "middle")
+    .attr("dominant-baseline", "middle")
+    .text("middle");
+
+svg.append("text")
+    .attr("x", newX)
+    .attr("y", "210")
+    .attr("fill", "none")
+    .attr("stroke", "blue")
+    .attr("font-size", "30")
+    .attr("text-anchor", "end")
+    .attr("dominant-baseline", "middle")
+    .text("end");
+
+svg.append("line")
+    .attr("x1", newX)
+    .attr("x2", newX)
+    .attr("y1", "150")
+    .attr("y2", "210")
+
+
+// Text with multiple ines:
+// the tspan attr
+var textArray = ['start', 'middle', 'end']
+svg.append("text")
+    .selectAll("tspan")
+    .data(textArray)
+    .enter().append("tspan")
+        .attr("x", "100")
+        .attr("y", function(d,i){ return 150 + (i*30)})
+        .attr("fill", "blue")
+        .attr("stroke", "blue")
+        .attr("stroke-width", "2")
+        .attr("font-size", "30")
+        .text(function(d){ return d; });
