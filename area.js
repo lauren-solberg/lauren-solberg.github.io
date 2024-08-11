@@ -10,11 +10,13 @@ var area = d3.area()
                 .y0(height) // Distance from the top of the screen (where y=0)
                 .y1(function(d){ return height - d;}); // Location of the upper line
 
+// Declare an SVG:
 var svg = d3.select("body")
                 .append("svg")
                 .attr("height","100%")
                 .attr("width", "100%");
 
-// Actually creating the area chart instance:
+// Actually creating the area chart instance. Calls the enerator with area() and apply the SVG instance with svg.append:
 svg.append("path")
         .attr("d", area(dataArray))
+        
