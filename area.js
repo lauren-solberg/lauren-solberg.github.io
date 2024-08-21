@@ -23,8 +23,10 @@ var y = d3.scaleLinear()
 
 // x-axis scale:
 var x = d3.scaleTime()
-                .domain([d3.extent(dataYears, function(d){ return parseDate(d); })])
+                .domain(d3.extent(dataYears, function(d){ return parseDate(d); }))
                 .range([0, width]);
+
+console.log(x(parseDate("2011")));
 
 console.log(y(0)); // Checking what the y-value will be when the input (x-value) is 0.
 console.log(y(90));
@@ -37,9 +39,11 @@ var yAxis = d3.axisLeft(y) // Numbers to the "Left" of the axis.
                 .tickPadding(10) // Adds white space between the ticks and the numbers.
                 .tickSize(10); // length of the ticks
 
+var xAxis = d3.axisBottom(x);
+
 // Generator for an area chart:
 var area = d3.area()
-                .x(function(d,i){ return i*20;})
+                .x(function(d,i){ return x(parseDate(dataYears[i]));})
                 .y0(height) // Distance from the top of the screen (where y=0)
                 .y1(function(d){ return y(d);}); // Location of the upper line
 
@@ -56,4 +60,8 @@ chartGroup.append("path")
 // Append the axis group here to make the axis actually show up:
 chartGroup.append("g")
         .attr("class","axis y")
-        .call(yAxis);    
+        .call(yAxis);  
+chartGroup.append("g")
+        .attr("class","axis x")
+        .attr("transform", "translate(0,"+height+")") // Moving the x-axis to the bottom of the group
+        .call(xAxis); // call the variable I've defined above
