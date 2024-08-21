@@ -3,21 +3,18 @@ html, body {
     height: 100%;
 }
 
-line {
-    stroke: red;
-}
-
 g.group0 path,
 g.group0 circle {
-    stroke: red;
+    stroke: none;
     fill: none;
-}
-
-g.tick line {
-    stroke: black;
 }
 
 g.tick text {
     size: 12px;
     fill: purple;
+}
+
+g.x.axis.hidden line, path {
+    display: none;
+    stroke: none;
 }
