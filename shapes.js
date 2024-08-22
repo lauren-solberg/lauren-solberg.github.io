@@ -1,10 +1,20 @@
 var dataArray = [5,11,18];
 var dataDays = ["Monday", "Wednesday", "Friday"]
 
-var x = d3.scaleOrdinal()
-            .domain(dataDays)
-            .range([25,85,145]);
+var rainbow = d3.scaleSequential(d3.interpolateRainbow) // Algorithm goes into parentheses here. i.e. interpolateRainbow
+                    .domain([0,10]);
+var rainbow2 = d3.scaleSequential(d3.interpolateRainbow)
+                    .domain([0,3]);
+var cat20 = d3.schemeCategory20; // Color scheme category 20
+console.log(cat20);
 
+// var x = d3.scaleOrdinal()
+//             .domain(dataDays) // What are the x-axis labels
+//             .range([25,85,145]); // Where (pixels) should the labels go
+var x = d3.scaleBand()
+            .domain(dataDays)
+            .range([0,170]) // Places the labels at the extremes of the chart.
+            .paddingInner(0.117); // Percentage of the x-axis dedicated to white space (a number between 0 and 1)
 var xAxis = d3.axisBottom(x);
 
 var svg = d3.select("body").append("svg")
@@ -17,9 +27,9 @@ svg.selectAll("rect")
     .append("rect")
         .attr("height", function(d){return d*15})
         .attr("width", "50")
-        .attr("x", function(d,i){return i*100;})
+        .attr("x", function(d,i){return i*60;})
         .attr("y", function(d,i){return 300 - (d*15)})
-        .attr("fill", "orange");
+        .attr("fill", function(d,i){ return rainbow(i); });
 
 svg.append("g")
         .attr("class", "x axis hidden")
@@ -35,7 +45,7 @@ svg.selectAll("circle.first")
         .attr("cx", function(d,i){newX += (d*3) + (i*20); return newX;})
         .attr("cy","100")
         .attr("r",function(d){ return d*3; })
-        .attr("fill", "black");
+        .attr("fill", function(d,i){ return rainbow2(i); });
 
 
 var newX = 600;
@@ -48,7 +58,7 @@ svg.selectAll("ellipse")
                 .attr("cy","100")
                 .attr("rx",function(d){ return d*3; })
                 .attr("ry","30")
-                .attr("fill", "green");
+                .attr("fill", function(d,i){ return cat20[i]});
 
 var newX = 900;
 svg.selectAll("line")
