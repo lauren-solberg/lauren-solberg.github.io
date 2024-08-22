@@ -3,6 +3,8 @@ var parseDate = d3.timeParse("%m/%d/%Y");
 d3.csv("prices.csv")
     .row(function(d){ return {month: parseDate(d.month), price: Number(d.price.trim().slice(1))}; }) // Runs a transformation on each datapoint
     .get(function(error,data){
+        console.log(data);
+
         // Chart dimensions:
         var height = 300; // Height of the chart we are making
         var width = 500;  // Width of the chart we are making
