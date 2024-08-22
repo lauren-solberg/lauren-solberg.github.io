@@ -32,13 +32,13 @@ d3.csv("prices.csv")
 
         // The chart itself, which fits inside the svg box. Right now it's still just its own empty box:
         var chartGroup = svg.append("g")
-                            .attr("transform","translate("+margin.left+","+margin.top+")"); // This line confuses me so much. But I know we are shifting the chart itself over to where the margins end.
+                                .attr("transform","translate("+margin.left+","+margin.top+")"); // This line confuses me so much. But I know we are shifting the chart itself over to where the margins end.
 
         // Now, we finally add the line itself:
         var line = d3.line()
-                    .x(function(d){ return x(d.month); })
-                    .y(function(d){ return y(d.price); });
+                        .x(function(d){ return x(d.month); })
+                        .y(function(d){ return y(d.price); });
 
         // Append it all together and add the aces:
-        chartGroup.append("path").attr("d", line(data));
+        chartGroup.append("path").attr("d",line(data));
 })
