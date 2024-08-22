@@ -3,6 +3,11 @@ html, body {
     height: 100%;
 }
 
+path {
+    stroke: green;
+    stroke-width: 2;
+}
+
 g.group0 path,
 g.group0 circle {
     stroke: none;
