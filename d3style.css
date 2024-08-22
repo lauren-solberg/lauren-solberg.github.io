@@ -10,7 +10,7 @@ path {
 
 g.group0 path,
 g.group0 circle {
-    stroke: none;
+    stroke: red;
     fill: none;
 }
 
