@@ -12,7 +12,7 @@ d3.tsv("data.tsv")
 
 // DSV: 
 // DSV doesn't go row by row because it sometimes contains entire chapters of text which span many pages and many rows.
-/* psv = d3.dsvFormat("|");
+psv = d3.dsvFormat("|");
 d3.text("prices.txt")
     .get(function(error,data){
         if(error) {
@@ -25,4 +25,4 @@ d3.text("prices.txt")
             }
             console.log(newRows);
           }
-    }) */
+    })
