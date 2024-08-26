@@ -26,3 +26,7 @@ d3.text("prices.txt")
             console.log(newRows);
           }
     })
+
+d3.json("treeData.json").get(function(error, data){
+  console.log(data);
+});
