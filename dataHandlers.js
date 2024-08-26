@@ -1,14 +1,14 @@
 var parseDate = d3.timeParse("%m/%d/%Y");
 // TSV: tab-separated value file
-d3.tsv("data.tsv")
-    .row(function(d){ return {month: parseDate(d.month), price: Number(d.price.trim().slice(1))}; }) // Runs a transformation on each datapoint
-    .get(function(error,data){
-        if(error) {
-            console.error("Error loading data:", error);
-          } else {
-            console.log(data);
-          }
-    })
+// d3.tsv("data.tsv")
+//     .row(function(d){ return {month: parseDate(d.month), price: Number(d.price.trim().slice(1))}; }) // Runs a transformation on each datapoint
+//     .get(function(error,data){
+//         if(error) {
+//             console.error("Error loading data:", error);
+//           } else {
+//             console.log(data);
+//           }
+//     })
 
 // DSV: 
 // DSV doesn't go row by row because it sometimes contains entire chapters of text which span many pages and many rows.
@@ -27,6 +27,21 @@ d3.tsv("data.tsv")
 //           }
 //     })
 
-d3.json("treeData.json").get(function(error, data){
-  console.log(data);
+// JSON
+// d3.json("treeData.json").get(function(error, data){
+//   console.log(data);
+// });
+
+// XML
+d3.xml("data.xml").get(function(error, data){
+  // JS method:
+  // var letterTag = data.documentElement.getElementsByTagName("letter"); // JavaScript method
+  // console.log(letterTag); // JavaScript method
+
+  // d3 method:
+  var letterNodes = d3.select(data).selectAll("letter")._groups[0];
+  // Logs a "node list"
+  console.log(letterNodes);
+
+  // console.log(data.documentElement);
 });
