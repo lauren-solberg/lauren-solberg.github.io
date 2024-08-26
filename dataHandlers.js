@@ -33,15 +33,49 @@ var parseDate = d3.timeParse("%m/%d/%Y");
 // });
 
 // XML
-d3.xml("data.xml").get(function(error, data){
-  // JS method:
-  // var letterTag = data.documentElement.getElementsByTagName("letter"); // JavaScript method
-  // console.log(letterTag); // JavaScript method
+// d3.xml("data.xml").get(function(error, data){
+//   // JS method:
+//   // var letterTag = data.documentElement.getElementsByTagName("letter"); // JavaScript method
+//   // console.log(letterTag); // JavaScript method
 
-  // d3 method:
-  var letterNodes = d3.select(data).selectAll("letter")._groups[0];
-  // Logs a "node list"
-  console.log(letterNodes);
+//   // d3 method:
+//   var letterNodes = d3.select(data).selectAll("letter")._groups[0];
+//   // Logs a "node list"
+//   console.log(letterNodes);
 
-  // console.log(data.documentElement);
+//   // console.log(data.documentElement);
+// });
+
+// TXT
+// d3 interprets txt files as one big long string.
+// d3.text("test.txt").get(function(error, data){
+
+//   var myTabPositions = [];
+//   var myLinePositions = [];
+
+//   var tabVal = '\\b\t\\b'; // Looks for word + tab + word
+//   var tabMod = 'g'; // returns all global instances
+//   var tabRegExp = new RegExp(tabVal, tabMod);
+
+//   var lineVal = '\\b\n\\b'; // Looks for word + new line + word
+//   var lineMod = 'g';
+//   var lineRegExp = new RegExp(lineVal, lineMod);
+
+//   data.replace(tabRegExp, function(a,b){
+//     myTabPositions.push(b); return a;
+//   });
+
+//   data.replace(lineRegExp, function(a,b){
+//     myLinePositions.push(b); return a;
+//   });
+
+//   console.log(myTabPositions);
+//   console.log(myLinePositions);
+
+// });
+
+// HTML:
+d3.html("http://enable-cors.org").get(function(error, data){
+  var fragment = data.querySelector("div");
+  console.log(fragment);
 });
