@@ -1,4 +1,17 @@
 var parseDate = d3.timeParse("%m/%d/%Y");
+
+// CSV:
+d3.csv("data/prices.csv")
+  .row(function(d){ return { month: parseDate(d.month), price: Number(d.price.trim().slice(1))};})
+  .get(function(error, data){ 
+    // console.log(data); 
+    var nestedData = d3.nest()
+                       .key(function(d) { return d.month.getFullYear(); })
+                       .key(function(d) { return d.month.getMonth(); })
+                       .entries(data);
+    console.log(nestedData);
+  });
+
 // TSV: tab-separated value file
 // d3.tsv("data.tsv")
 //     .row(function(d){ return {month: parseDate(d.month), price: Number(d.price.trim().slice(1))}; }) // Runs a transformation on each datapoint
@@ -74,8 +87,8 @@ var parseDate = d3.timeParse("%m/%d/%Y");
 
 // });
 
-// HTML:
-d3.html("http://enable-cors.org").get(function(error, data){
-  var fragment = data.querySelector("div");
-  console.log(fragment);
-});
+// // HTML:
+// d3.html("http://enable-cors.org").get(function(error, data){
+//   var fragment = data.querySelector("div");
+//   console.log(fragment);
+// });
