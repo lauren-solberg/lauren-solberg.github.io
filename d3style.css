@@ -32,3 +32,19 @@ html, body {
     font-size: 12px;
     fill: purple;
   }  
+
+  rect {
+    fill: lightblue;
+    stroke: cornflowerblue;
+  }
+
+  circle {
+    fill: black;
+    stroke: cornflowerblue;
+  }
+
+  text {
+    font-family: arial;
+    fill: white;
+    font-size: 11px;
+  }
