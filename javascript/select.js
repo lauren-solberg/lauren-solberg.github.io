@@ -1,4 +1,4 @@
-var data = [];
+var data = []; 
 
 // 4 top-level arrays:
 data[0] = [];
@@ -59,7 +59,7 @@ secondGroups.append("rect")
 secondGroups.selectAll("circle") // top section
 	.data(function(d){ console.log(d); return d; }) // top section
 	.enter().append("circle") // top section
-	.filter(function(d){ return d>0; }) // top section
+	.filter(function(d){ return d>10; }) // top section
 		.attr("cx",function(d,i){ return ((i*21)+10); }) // bottom section
 		.attr("cy","25") // bottom section
 		.attr("r","10") // bottom section
