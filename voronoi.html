@@ -11,9 +11,9 @@
       stroke: lightsteelblue;
     }
 
-    g.polygons path:hover {
+    /* g.polygons path:hover {
       fill: yellow;
-    }
+    } */
 
     g.fuel circle {
       fill: steelblue;
@@ -32,6 +32,11 @@ d3.select(window).on("resize", callFunction);
 // callFunction;
 
 function callFunction(){
+
+        var tooltip = d3.select("body").append("div")
+                        .style("opacity","0")
+                        .style("position","absolute");
+
         var svgtest = d3.select("body").select("svg");
         if (!svgtest.empty()){
           svgtest.remove();
@@ -49,7 +54,14 @@ function callFunction(){
       .selectAll("path")
         .data(voronoi.polygons(vertices))
         .enter().append("path")
-                  .attr("d",function(d){ return "M"+d.join("L")+"Z"; });
+                  .attr("d",function(d){ return "M"+d.join("L")+"Z"; })
+                  .on("mousemove", function(d){
+                    tooltip.style("opacity","1")
+                           .style("left",d3.event.pageX + "px")
+                           .style("top",d3.event.pageY + "px");
+                    
+                    tooltip.html("Number of sides: " + d.length);
+                  });
 
       svg.append("g").attr("class","fuel")
       .selectAll("circle")
@@ -60,6 +72,7 @@ function callFunction(){
                   .attr("r","2.5");
 
 }
+callFunction();
     </script>
   </body>
 
